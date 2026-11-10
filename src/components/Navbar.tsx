@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75"></span>
       <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-400 border-2 border-white dark:border-zinc-950"></span>
     </span>
-  </div>
+  
 </div>
 
           <div>
