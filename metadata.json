@@ -1,0 +1,6 @@
+{
+  "name": "Tekel Live",
+  "description": "একটি আধুনিক বাংলা সোশ্যাল মিডিয়া প্ল্যাটফর্ম — ছবি ও ভিডিও পোস্ট, বার্তা আদান-প্রদান, ফলো এবং অ্যাডমিন ড্যাশবোর্ড।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
