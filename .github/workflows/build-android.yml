@@ -1,88 +1,76 @@
 
+
 name: Build Android APK and AAB
 
-on:
+'on':
   push:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
   pull_request:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
   build-android:
-    name: Build Android APK & AAB
+    name: Build Android APK and AAB
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Set up Java Development Kit
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: zulu
           java-version: '21'
 
-    - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22'
 
-
-      - name: Install Node.js Dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build Web Application
+      - name: Build Web App
         run: npm run build
 
-      - name: Create Android Platform
+      - name: Install Capacitor Android
+        run: npm install @capacitor/android
+
+      - name: Add Android Platform
         run: |
           if [ ! -d android ]; then
             npx cap add android
           fi
 
-      - name: Sync Android Platform
+      - name: Sync Android
         run: npx cap sync android
 
-      - name: Check Gradle Wrapper
-        run: |
-          if [ ! -f android/gradlew ]; then
-            echo "ERROR: android/gradlew not found!"
-            exit 1
-          fi
-          chmod +x android/gradlew
+      - name: Make Gradle Executable
+        run: chmod +x android/gradlew
 
       - name: Build Debug APK
-        run: |
-          cd android
-          ./gradlew assembleDebug --stacktrace
+        run: cd android && ./gradlew assembleDebug
 
       - name: Build Release APK
-        run: |
-          cd android
-          ./gradlew assembleRelease --stacktrace
+        run: cd android && ./gradlew assembleRelease
 
       - name: Build Release AAB
-        run: |
-          cd android
-          ./gradlew bundleRelease --stacktrace
+        run: cd android && ./gradlew bundleRelease
 
-      - name: Upload Debug APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: TekelLive-Debug-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: TekelLive-APK
+          path: android/app/build/outputs/apk/**/*.apk
 
-      - name: Upload Release APK
+      - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: TekelLive-Release-APK
-          path: android/app/build/outputs/apk/release/*.apk
-          if-no-files-found: warn
-
-      - name: Upload Release AAB
-        uses: actions/upload-artifact@v4
-        with:
-          name: TekelLive-Release-AAB
-          path: android/app/build/outputs/bundle/release/*.aab
-          if-no-files-found: warn
+          name: TekelLive-AAB
+          path: android/app/build/outputs/bundle/**/*.aab
