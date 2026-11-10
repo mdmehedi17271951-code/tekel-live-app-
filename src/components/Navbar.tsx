@@ -34,13 +34,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         
         {/* Brand Logo & Live Badge */}
         <div className="flex items-center gap-2.5 cursor-pointer">
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-500 shadow-md shadow-emerald-500/20 text-white font-bold text-xl tracking-tighter">
-            <span>টে</span>
-            <span className="absolute -top-1 -right-1 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500 border-2 border-white dark:border-zinc-950"></span>
-            </span>
-          </div>
+  <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-800 to-cyan-500 shadow-lg shadow-blue-500/20 text-white font-black text-3xl italic tracking-tighter">
+    M
+    <span className="absolute -top-1 -right-1 flex h-3 w-3">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-400 border-2 border-white dark:border-zinc-950"></span>
+    </span>
+  </div>
+</div>
 
           <div>
             <div className="flex items-center gap-1.5">
