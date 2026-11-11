@@ -250,25 +250,25 @@ export const ExploreView: React.FC<ExploreViewProps> = ({ onUserClick, allPosts 
             </div>
           </div>
 
-          {/* Visual Discovery Grid (Photos & Videos) */}
-          <div className="bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 p-4 shadow-xs">
-            <h2 className="text-sm font-bold text-zinc-900 dark:text-white mb-3 flex items-center gap-2">
-              <Compass className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>সাম্প্রতিক মিডিয়া ও মুহূর্ত</span>
+          {/* Visual Discovery Grid (Videos & Reels) */}
+          <div className="bg-zinc-950/90 rounded-3xl border border-zinc-800/80 p-4 shadow-xl">
+            <h2 className="text-sm font-extrabold text-white mb-3 flex items-center gap-2">
+              <Compass className="w-4 h-4 text-cyan-400" />
+              <span>জনপ্রিয় শর্ট ভিডিও ও রিলস</span>
             </h2>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {mediaPosts.map((post) => (
                 <div
                   key={post.id}
                   onClick={() => onUserClick(post.authorId)}
-                  className="relative rounded-2xl overflow-hidden aspect-square bg-zinc-950 group cursor-pointer"
+                  className="relative rounded-2xl overflow-hidden aspect-[9/16] bg-black border border-zinc-800 group cursor-pointer shadow-md"
                 >
-                  {post.type === 'video' && post.videoUrl ? (
+                  {post.videoUrl ? (
                     <>
-                      <video src={post.videoUrl} className="w-full h-full object-cover" />
-                      <div className="absolute top-2 right-2 p-1 rounded-full bg-black/60 text-white">
-                        <Play className="w-3 h-3 fill-white" />
+                      <video src={post.videoUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-xs">
+                        <Play className="w-3.5 h-3.5 fill-white" />
                       </div>
                     </>
                   ) : (
@@ -278,9 +278,12 @@ export const ExploreView: React.FC<ExploreViewProps> = ({ onUserClick, allPosts 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
-                    <span className="text-[11px] text-white font-semibold truncate drop-shadow-xs">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex flex-col justify-end p-2.5">
+                    <span className="text-[11px] text-white font-extrabold truncate drop-shadow-xs">
                       @{post.authorUsername}
+                    </span>
+                    <span className="text-[10px] text-zinc-300 line-clamp-1">
+                      {post.content}
                     </span>
                   </div>
                 </div>

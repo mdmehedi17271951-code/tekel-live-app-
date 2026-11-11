@@ -32,6 +32,9 @@ export interface Post {
   content: string;
   mediaUrl?: string;
   videoUrl?: string;
+  thumbnailUrl?: string;
+  soundTitle?: string;
+  aspectRatio?: '9:16' | '16:9' | '1:1';
   likesCount: number;
   commentsCount: number;
   sharesCount: number;
@@ -39,6 +42,24 @@ export interface Post {
   tags?: string[];
   createdAt: string;
   updatedAt?: string;
+}
+
+export interface LiveGift {
+  id: string;
+  name: string;
+  bengaliName: string;
+  icon: string;
+  coins: number;
+}
+
+export interface LiveChatMessage {
+  id: string;
+  senderId: string;
+  senderName: string;
+  senderPhoto: string;
+  text: string;
+  gift?: LiveGift;
+  timestamp: string;
 }
 
 export interface Comment {

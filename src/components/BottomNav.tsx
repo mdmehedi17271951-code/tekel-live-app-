@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-export type TabType = 'home' | 'explore' | 'ai' | 'messages' | 'profile' | 'admin';
+export type TabType = 'home' | 'explore' | 'create' | 'ai' | 'messages' | 'profile' | 'admin' | 'live';
 
 interface BottomNavProps {
   activeTab: TabType;

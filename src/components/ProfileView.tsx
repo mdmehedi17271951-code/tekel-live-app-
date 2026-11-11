@@ -249,13 +249,13 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
         </div>
 
         {/* Tabs: Posts / Media / Liked / Saved */}
-        <div className="flex items-center justify-around mt-4 border-b border-zinc-200 dark:border-zinc-800 overflow-x-auto no-scrollbar">
+        <div className="flex items-center justify-around mt-4 border-b border-zinc-800 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab('posts')}
-            className={`flex items-center gap-1.5 py-3 px-2 text-xs sm:text-sm font-semibold border-b-2 transition-all shrink-0 cursor-pointer ${
+            className={`flex items-center gap-1.5 py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 cursor-pointer ${
               activeTab === 'posts'
-                ? 'border-emerald-600 text-emerald-600 dark:text-emerald-400'
-                : 'border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                ? 'border-cyan-400 text-cyan-400'
+                : 'border-transparent text-zinc-400 hover:text-white'
             }`}
           >
             <Grid className="w-4 h-4" />
@@ -264,22 +264,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
 
           <button
             onClick={() => setActiveTab('media')}
-            className={`flex items-center gap-1.5 py-3 px-2 text-xs sm:text-sm font-semibold border-b-2 transition-all shrink-0 cursor-pointer ${
+            className={`flex items-center gap-1.5 py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 cursor-pointer ${
               activeTab === 'media'
-                ? 'border-emerald-600 text-emerald-600 dark:text-emerald-400'
-                : 'border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                ? 'border-cyan-400 text-cyan-400'
+                : 'border-transparent text-zinc-400 hover:text-white'
             }`}
           >
             <ImageIcon className="w-4 h-4" />
-            <span>{t('photosAndVideos')}</span>
+            <span>ভিডিও ও রিলস</span>
           </button>
 
           <button
             onClick={() => setActiveTab('liked')}
-            className={`flex items-center gap-1.5 py-3 px-2 text-xs sm:text-sm font-semibold border-b-2 transition-all shrink-0 cursor-pointer ${
+            className={`flex items-center gap-1.5 py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 cursor-pointer ${
               activeTab === 'liked'
-                ? 'border-emerald-600 text-emerald-600 dark:text-emerald-400'
-                : 'border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                ? 'border-cyan-400 text-cyan-400'
+                : 'border-transparent text-zinc-400 hover:text-white'
             }`}
           >
             <Heart className="w-4 h-4" />
@@ -289,16 +289,16 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
           {isOwnProfile && (
             <button
               onClick={() => setActiveTab('saved')}
-              className={`flex items-center gap-1.5 py-3 px-2 text-xs sm:text-sm font-semibold border-b-2 transition-all shrink-0 cursor-pointer ${
+              className={`flex items-center gap-1.5 py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all shrink-0 cursor-pointer ${
                 activeTab === 'saved'
-                  ? 'border-amber-500 text-amber-600 dark:text-amber-400'
-                  : 'border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                  ? 'border-amber-400 text-amber-400'
+                  : 'border-transparent text-zinc-400 hover:text-white'
               }`}
             >
-              <Bookmark className={`w-4 h-4 ${activeTab === 'saved' ? 'fill-amber-500' : ''}`} />
+              <Bookmark className={`w-4 h-4 ${activeTab === 'saved' ? 'fill-amber-400' : ''}`} />
               <span>{t('savedPosts')}</span>
               {savedPosts.length > 0 && (
-                <span className="ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold">
+                <span className="ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] bg-amber-950 text-amber-300 border border-amber-800 font-bold">
                   {language === 'bn' ? convertNumberToBengali(savedPosts.length) : savedPosts.length}
                 </span>
               )}
@@ -310,7 +310,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
         <div className="mt-5 space-y-4">
           {activeTab === 'posts' && (
             userPosts.length === 0 ? (
-              <div className="py-12 text-center text-zinc-400 text-xs sm:text-sm">
+              <div className="py-12 text-center text-zinc-500 text-xs sm:text-sm">
                 এখনো কোনো পোস্ট করা হয়নি
               </div>
             ) : (
@@ -327,21 +327,21 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
 
           {activeTab === 'media' && (
             mediaPosts.length === 0 ? (
-              <div className="py-12 text-center text-zinc-400 text-xs sm:text-sm">
-                কোনো ছবি বা ভিডিও পাওয়া যায়নি
+              <div className="py-12 text-center text-zinc-500 text-xs sm:text-sm">
+                কোনো ভিডিও পাওয়া যায়নি
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                 {mediaPosts.map(p => (
-                  <div key={p.id} className="relative rounded-2xl overflow-hidden aspect-square bg-zinc-900 group cursor-pointer">
-                    {p.type === 'video' && p.videoUrl ? (
-                      <video src={p.videoUrl} className="w-full h-full object-cover" />
+                  <div key={p.id} className="relative rounded-2xl overflow-hidden aspect-[9/16] bg-black border border-zinc-800 group cursor-pointer shadow-md">
+                    {p.videoUrl ? (
+                      <video src={p.videoUrl} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     ) : (
                       <img src={p.mediaUrl} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     )}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 text-white text-xs font-bold transition-opacity">
-                      <span className="flex items-center gap-1">
-                        <Heart className="w-4 h-4 fill-white" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2.5">
+                      <span className="flex items-center gap-1 text-white text-xs font-bold drop-shadow-md">
+                        <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
                         {p.likesCount}
                       </span>
                     </div>
