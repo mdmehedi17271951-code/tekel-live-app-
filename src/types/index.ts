@@ -123,3 +123,11 @@ export interface ReportItem {
   status: 'pending' | 'resolved' | 'dismissed';
   createdAt: string;
 }
+
+export interface AIChatMessage {
+  id: string;
+  role: 'user' | 'model';
+  text: string;
+  timestamp: string;
+  isError?: boolean;
+}

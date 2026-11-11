@@ -158,6 +158,24 @@ export const translations = {
     actionSuccess: 'পদক্ষেপ সফল হয়েছে',
     notAuthorized: 'আপনার অ্যাডমিন অ্যাক্সেসের অনুমতি নেই।',
     
+    // Tekel AI Assistant
+    tekelAI: 'টেকেল AI',
+    tekelAIFull: 'টেকেল এআই সহকারী',
+    aiTagline: 'আপনার বুদ্ধিমান বাংলা ও ইংরেজি এআই সঙ্গী',
+    askAIPlaceholder: 'যেকোনো বিষয়ে প্রশ্ন করুন, পোস্ট আইডিয়া চান বা লিখুন...',
+    send: 'পাঠান',
+    regenerate: 'পুনরায় তৈরি করুন',
+    copy: 'কপি করুন',
+    copied: 'কপি হয়েছে!',
+    shareToFeed: 'পোস্ট হিসেবে শেয়ার করুন',
+    shareExternal: 'শেয়ার করুন',
+    clearChat: 'চ্যাট ইতিহাস মুছুন',
+    confirmClearChat: 'আপনি কি নিশ্চিত যে সকল এআই বার্তা মুছে ফেলতে চান?',
+    aiThinking: 'টেকেল এআই চিন্তা করছে...',
+    suggestedPrompts: 'প্রস্তাবিত বিষয়সমূহ',
+    aiDisclaimer: 'টেকেল এআই কৃত্রিম বুদ্ধিমত্তা দ্বারা চালিত। গুরুত্বপূর্ণ তথ্যের সত্যতা যাচাই করার পরামর্শ দেওয়া হয়।',
+    greetingPrompt: 'আসসালামু আলাইকুম! আমি টেকেল এআই (Tekel AI)। আজ আপনাকে কীভাবে সহায়তা করতে পারি?',
+    
     // System & Theme
     darkMode: 'ডার্ক মোড',
     lightMode: 'লাইট মোড',
@@ -321,6 +339,24 @@ export const translations = {
     removeBadge: 'Remove Badge',
     actionSuccess: 'Action completed successfully',
     notAuthorized: 'You are not authorized to view the admin area.',
+    
+    // Tekel AI Assistant
+    tekelAI: 'Tekel AI',
+    tekelAIFull: 'Tekel AI Assistant',
+    aiTagline: 'Your Intelligent Bilingual AI Companion',
+    askAIPlaceholder: 'Ask anything, brainstorm post captions or ideas...',
+    send: 'Send',
+    regenerate: 'Regenerate',
+    copy: 'Copy',
+    copied: 'Copied!',
+    shareToFeed: 'Share to Feed',
+    shareExternal: 'Share',
+    clearChat: 'Clear History',
+    confirmClearChat: 'Are you sure you want to clear your AI chat history?',
+    aiThinking: 'Tekel AI is thinking...',
+    suggestedPrompts: 'Suggested Topics',
+    aiDisclaimer: 'Tekel AI is powered by artificial intelligence. Please verify important information.',
+    greetingPrompt: 'Hello! I am Tekel AI. How can I assist you today?',
     
     // System & Theme
     darkMode: 'Dark Mode',

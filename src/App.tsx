@@ -19,6 +19,7 @@ import { MessagesView } from './components/MessagesView';
 import { NotificationsView } from './components/NotificationsView';
 import { ExploreView } from './components/ExploreView';
 import { AdminDashboard } from './components/AdminDashboard';
+import { TekelAIView } from './components/TekelAIView';
 import { Post, UserProfile } from './types';
 import { FirestoreService } from './services/firestore';
 import { INITIAL_POSTS } from './utils/mockData';
@@ -40,6 +41,7 @@ const MainApp: React.FC = () => {
   const [feedFilter, setFeedFilter] = useState<'all' | 'following' | 'videos'>('all');
   const [posts, setPosts] = useState<Post[]>(INITIAL_POSTS);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [initialPostContent, setInitialPostContent] = useState('');
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [viewingProfileUserId, setViewingProfileUserId] = useState<string | null>(null);
@@ -93,6 +95,10 @@ const MainApp: React.FC = () => {
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onOpenAdmin={() => setActiveTab('admin')}
         onOpenAuth={() => setIsAuthModalOpen(true)}
+        onOpenAI={() => {
+          setActiveTab('ai');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         unreadCount={2}
       />
 
@@ -242,6 +248,16 @@ const MainApp: React.FC = () => {
           />
         )}
 
+        {/* TAB 6: TEKEL AI ASSISTANT */}
+        {activeTab === 'ai' && (
+          <TekelAIView
+            onShareAsPost={(text) => {
+              setInitialPostContent(text);
+              setIsCreateModalOpen(true);
+            }}
+          />
+        )}
+
       </main>
 
       {/* Floating / Mobile Bottom Navigation */}
@@ -261,8 +277,15 @@ const MainApp: React.FC = () => {
       {/* Post Creation Modal */}
       <CreatePostModal
         isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
-        onPostCreated={handlePostCreated}
+        onClose={() => {
+          setIsCreateModalOpen(false);
+          setInitialPostContent('');
+        }}
+        onPostCreated={(post) => {
+          handlePostCreated(post);
+          setInitialPostContent('');
+        }}
+        initialContent={initialPostContent}
       />
 
       {/* Authentication Modal */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Image, 
@@ -19,6 +19,7 @@ interface CreatePostModalProps {
   isOpen: boolean;
   onClose: () => void;
   onPostCreated: (post: Post) => void;
+  initialContent?: string;
 }
 
 const PRESET_PHOTO_OPTIONS = [
@@ -46,6 +47,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
   isOpen,
   onClose,
   onPostCreated,
+  initialContent,
 }) => {
   const { currentUser, t } = useAuth();
   const [content, setContent] = useState('');
@@ -56,6 +58,13 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
   const [selectedTag, setSelectedTag] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPresetPicker, setShowPresetPicker] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && initialContent) {
+      setContent(initialContent);
+      setPostType('text');
+    }
+  }, [isOpen, initialContent]);
 
   if (!isOpen) return null;
 

@@ -6,7 +6,8 @@ import {
   Shield, 
   Search, 
   Globe,
-  Radio
+  Radio,
+  Sparkles
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { convertNumberToBengali } from '../utils/translations';
@@ -16,6 +17,7 @@ interface NavbarProps {
   onOpenNotifications: () => void;
   onOpenAdmin: () => void;
   onOpenAuth: () => void;
+  onOpenAI?: () => void;
   unreadCount?: number;
 }
 
@@ -24,6 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenNotifications,
   onOpenAdmin,
   onOpenAuth,
+  onOpenAI,
   unreadCount = 2,
 }) => {
   const { currentUser, isAdmin, theme, toggleTheme, language, setLanguage, t } = useAuth();
@@ -61,6 +64,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Action Icons */}
         <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Tekel AI Button */}
+          {onOpenAI && (
+            <button
+              onClick={onOpenAI}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-md shadow-teal-500/25 transition-all cursor-pointer active:scale-95"
+              title={t('tekelAI')}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-200 animate-pulse" />
+              <span>{t('tekelAI')}</span>
+            </button>
+          )}
+
           {/* Search Trigger */}
           <button
             onClick={onOpenSearch}

@@ -5,11 +5,12 @@ import {
   PlusCircle, 
   MessageCircle, 
   User as UserIcon,
-  Shield
+  Shield,
+  Sparkles
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-export type TabType = 'home' | 'explore' | 'messages' | 'profile' | 'admin';
+export type TabType = 'home' | 'explore' | 'ai' | 'messages' | 'profile' | 'admin';
 
 interface BottomNavProps {
   activeTab: TabType;
@@ -67,6 +68,22 @@ export const BottomNav: React.FC<BottomNavProps> = ({
             <PlusCircle className="w-7 h-7" />
           </button>
         </div>
+
+        {/* Tekel AI Tab */}
+        <button
+          onClick={() => onTabChange('ai')}
+          className={`relative flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+            activeTab === 'ai'
+              ? 'text-teal-600 dark:text-teal-400 font-bold'
+              : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'
+          }`}
+        >
+          <div className="relative">
+            <Sparkles className={`w-5.5 h-5.5 ${activeTab === 'ai' ? 'stroke-[2.5px] text-teal-500' : 'stroke-[1.75px]'}`} />
+            <span className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full animate-ping opacity-75" />
+          </div>
+          <span className="text-[10px] mt-1 font-semibold">{t('tekelAI')}</span>
+        </button>
 
         {/* Messages Tab */}
         <button
